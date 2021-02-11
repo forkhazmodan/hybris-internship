@@ -2,6 +2,7 @@ package com.hybris.task.util;
 
 import com.hybris.task.database.seed.OrderSeed;
 import com.hybris.task.database.seed.ProductSeed;
+import com.hybris.task.util.HibernateUtil;
 
 public class AppBootstrap {
 
