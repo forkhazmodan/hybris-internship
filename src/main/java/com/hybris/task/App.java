@@ -5,11 +5,9 @@ import com.hybris.task.util.AppBootstrap;
 
 import java.util.Scanner;
 
-public class App 
-{
-    public static void main( String[] args )
-    {
-        try{
+public class App {
+    public static void main(String[] args) {
+        try {
             AppBootstrap.init();
 
             Scanner sc = new Scanner(System.in);
@@ -19,7 +17,7 @@ public class App
             while (true) {
                 String line = sc.nextLine().trim();
 
-                if(line.length() > 0) {
+                if (line.length() > 0) {
                     CommandFacade.run(line);
                 }
             }

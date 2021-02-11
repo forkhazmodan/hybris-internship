@@ -1,7 +1,5 @@
 package com.hybris.task.util;
 
-import org.hibernate.SessionFactory;
-
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;

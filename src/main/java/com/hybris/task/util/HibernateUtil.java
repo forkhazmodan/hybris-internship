@@ -2,7 +2,6 @@ package com.hybris.task.util;
 
 import com.hybris.task.entity.Order;
 import com.hybris.task.entity.OrderItem;
-import com.hybris.task.entity.OrderProductId;
 import com.hybris.task.entity.Product;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -12,11 +11,8 @@ import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.spi.ServiceException;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
 import java.util.Properties;
-import java.util.concurrent.Callable;
 
 public class HibernateUtil {
 
