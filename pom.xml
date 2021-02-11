@@ -101,13 +101,13 @@
         <plugin>
           <artifactId>maven-jar-plugin</artifactId>
           <version>3.0.2</version>
+        </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>exec-maven-plugin</artifactId>
+          <version>1.2.1</version>
           <configuration>
-            <archive>
-              <manifest>
-                <addClasspath>true</addClasspath>
-                <mainClass>com.hybris.task.App</mainClass>
-              </manifest>
-            </archive>
+            <mainClass>com.hybris.task.App</mainClass>
           </configuration>
         </plugin>
         <plugin>

@@ -4,13 +4,11 @@
 
 ##### Run application: 
 ```
-mvn exec:java -Dexec.mainClass="com.hybris.task.App"
+mvn exec:java
 ```
 
 ##### Run tests: 
 ```
 mvn clean test
 ```
-
-
 
