@@ -4,6 +4,7 @@
 
 ##### Run application: 
 ```
+mvn install
 mvn exec:java
 ```
 
