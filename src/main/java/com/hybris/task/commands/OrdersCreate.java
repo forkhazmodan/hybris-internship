@@ -8,7 +8,8 @@ import com.hybris.task.service.OrderService;
 import com.hybris.task.service.ProductService;
 import com.hybris.task.util.StringHelper;
 
-@Command(regex = "orders:create", description = "Create orders, use product id`s. Duplicate id entry increase order item quantity.")
+@Command(regex = "orders:create",
+        description = "Create orders, use product id`s. Duplicate id entry increase order item quantity.")
 public class OrdersCreate implements CommandInterface {
 
     private final OrderService orderService = new OrderService();

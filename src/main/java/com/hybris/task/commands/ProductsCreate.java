@@ -2,8 +2,6 @@ package com.hybris.task.commands;
 
 import com.hybris.task.annotations.Command;
 import com.hybris.task.annotations.CommandParam;
-import com.hybris.task.dao.ProductDao;
-import com.hybris.task.dao.ProductDaoImpl;
 import com.hybris.task.entity.Product;
 import com.hybris.task.enums.ProductStatus;
 import com.hybris.task.service.ProductService;
@@ -31,7 +29,7 @@ public class ProductsCreate implements CommandInterface {
         Integer productPrice = Integer.parseInt(this.productPrice);
         ProductStatus productStatus;
 
-        try{
+        try {
             productStatus = ProductStatus.valueOf(this.productStatus);
         } catch (IllegalArgumentException e) {
             productStatus = ProductStatus.IN_STOCK;

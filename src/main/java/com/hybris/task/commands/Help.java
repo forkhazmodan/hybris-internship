@@ -11,45 +11,43 @@ public class Help implements CommandInterface {
 
     @Override
     public void run() {
+        AsciiTable at = new AsciiTable();
+        at.addRule();
+        at.addRow("Commands", "Params", "Description");
+        at.addRule();
+        CommandFacade.getSetOfCommandClass().forEach(cls -> {
+            try {
+                CommandInterface commandInstance = null;
+                String commandRegex = cls.getAnnotation(Command.class).regex();
+                String commandDescription = cls.getAnnotation(Command.class).description();
+                String example = cls.getAnnotation(Command.class).example();
 
+                commandInstance = cls.getConstructor().newInstance();
 
-            AsciiTable at = new AsciiTable();
-            at.addRule();
-            at.addRow("Commands", "Params", "Description");
-            at.addRule();
-            CommandFacade.getSetOfCommandClass().forEach(cls -> {
-                try {
-                    CommandInterface commandInstance = null;
-                        String commandRegex = cls.getAnnotation(Command.class).regex();
-                        String commandDescription = cls.getAnnotation(Command.class).description();
-                        String example = cls.getAnnotation(Command.class).example();
+                StringBuilder sb = new StringBuilder();
 
-                        commandInstance = cls.getConstructor().newInstance();
+                CommandFacade.getAnnotatedFields(commandInstance).forEach(field -> {
+                    String paramRegex = field.getAnnotation(CommandParam.class).regex();
+                    String paramDescription = field.getAnnotation(CommandParam.class).description();
+                    String paramExample = field.getAnnotation(CommandParam.class).example();
 
-                        StringBuilder sb = new StringBuilder();
+                    boolean paramIsRequired = field.getAnnotation(CommandParam.class).required();
 
-                        CommandFacade.getAnnotatedFields(commandInstance).forEach(field -> {
-                            String paramRegex = field.getAnnotation(CommandParam.class).regex();
-                            String paramDescription = field.getAnnotation(CommandParam.class).description();
-                            String paramExample = field.getAnnotation(CommandParam.class).example();
+                    if (paramIsRequired) {
+                        sb.append("<br />").append("--").append(paramRegex).append("=").append(paramExample);
+                    } else {
+                        sb.append("<br />").append("[").append("--").append(paramRegex).append("=").append(paramExample).append("]");
+                    }
+                });
 
-                            boolean paramIsRequired = field.getAnnotation(CommandParam.class).required();
+                at.addRow(commandRegex, sb.toString(), commandDescription);
+                at.addRule();
+            } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+                e.printStackTrace();
+            }
+        });
 
-                            if(paramIsRequired) {
-                                sb.append("<br />").append("--").append(paramRegex).append("=").append(paramExample);
-                            } else {
-                                sb.append("<br />").append("[").append("--").append(paramRegex).append("=").append(paramExample).append("]");
-                            }
-                        });
-
-                    at.addRow(commandRegex, sb.toString(), commandDescription);
-                    at.addRule();
-                } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
-                    e.printStackTrace();
-                }
-            });
-
-            System.out.println(at.render());
+        System.out.println(at.render());
 
     }
 }

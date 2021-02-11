@@ -17,7 +17,7 @@ public class ProductsRemoveAll implements CommandInterface {
 
     @Override
     public void run() {
-        if(password.equals(properties.getProperty("admin.password"))) {
+        if (password.equals(properties.getProperty("admin.password"))) {
             productService.removeProducts();
         } else {
             throw new CommandErrorException("Invalid password");

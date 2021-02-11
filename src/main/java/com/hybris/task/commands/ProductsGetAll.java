@@ -8,7 +8,7 @@ import de.vandermeer.asciitable.AsciiTable;
 import java.util.List;
 
 @Command(regex = "products:get.all", description = "Get all products")
-public class ProductsGetAll implements CommandInterface{
+public class ProductsGetAll implements CommandInterface {
 
     private final ProductService productService = new ProductService();
 

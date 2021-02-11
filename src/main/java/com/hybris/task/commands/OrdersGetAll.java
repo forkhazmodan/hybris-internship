@@ -8,7 +8,7 @@ import de.vandermeer.asciitable.AsciiTable;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
-@Command(regex = "orders:get.all", description = "Get all products")
+@Command(regex = "orders:get.all",description = "Get all products")
 public class OrdersGetAll implements CommandInterface {
 
     private final OrderService orderService = new OrderService();
